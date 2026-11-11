@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+DIR=$(cd "$(dirname "$0")/.." && pwd)
+BIN="$DIR/target/release/vault"
+stale() { for f in "$DIR/Cargo.toml" "$DIR"/rust/*.rs; do [ "$f" -nt "$BIN" ] && return 0; done; return 1; }
+if [ ! -x "$BIN" ] || stale; then
+  cargo build --release --quiet --manifest-path "$DIR/Cargo.toml"
+fi
+export VAULT_REPO_ROOT="$DIR"
+exec "$BIN" "$@"

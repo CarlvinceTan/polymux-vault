@@ -1,0 +1,5 @@
+#!/bin/sh
+# MCP server entry point. OpenCode starts this over stdio.
+set -e
+DIR=$(cd "$(dirname "$0")/.." && pwd)
+exec "${BUN:-$HOME/.bun/bin/bun}" run "$DIR/src/main.ts" "$@"

@@ -1,0 +1,22 @@
+{
+  "name": "vault-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KeePass vault as an MCP server: passwords, TOTP codes and recovery codes for an agent, with the master password in the macOS Keychain.",
+  "bin": {
+    "vault-mcp": "./bin/vault-mcp",
+    "vault": "./bin/vault"
+  },
+  "scripts": {
+    "start": "bun run src/main.ts",
+    "skills": "bun run src/cli.ts skills status",
+    "test": "cargo test",
+    "build": "cargo build --release"
+  },
+  "dependencies": {
+    "hash-wasm": "^4.12.0",
+    "kdbxweb": "^2.1.1",
+    "otpauth": "^9.5.2"
+  }
+}

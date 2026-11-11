@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Vault Autofill",
+  "version": "1.0",
+  "description": "Fills passwords, codes and passkeys from your vault, after Touch ID.",
+  "permissions": [
+    "nativeMessaging"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://*/*",
+        "http://localhost/*"
+      ],
+      "js": [
+        "webauthn.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    }
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu9f1oliayGP/v4z4ne38q9cj5hz3R23FyZkVFZNXCCMvrNtpO7mHUWRr6nB+neywDfAAaW3+dUVPvWXBlzoB+3xzKr2SFhPVb7bO217mEgyYdn1JMayFH4MhBOOZkSclBvBS5Np8Lsl1dXyLDqtu4YmuWXHN86T7hwuQ6mvzflEROtdANp3ueWkmFxizJG5seDDYh1W6CCOSvoVCEfVZbnHauWq4QJUFBeo78DkO+FIk8qKvqmDEi0w7Ze1JDo9o/KWbahP15fSJxzT32fC8v4bnwOwNucA0gHRXAZE3oX4GNGwbNaV//ronKlyu8430ydcijQAQ67Pg6cfEPBmtcwIDAQAB"
+}
