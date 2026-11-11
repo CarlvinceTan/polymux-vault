@@ -13,9 +13,9 @@ keyed by the vault path, so opening is silent and nothing is typed. There is no
 MCP server: every command is one short-lived process, and the vault is opened
 and closed on each call.
 
-On this host, invoke `/Users/carlvincetan/code/agents/vault/bin/vault`;
-`vault` below is shorthand, not a guarantee that it is on `PATH`. On other
-devices, resolve their installed CLI path.
+The CLI is installed as `vault` on `PATH` (a wrapper around
+`~/code/proj/polymux-vault/bin/vault`). On another device, resolve its installed
+CLI path.
 
 ## Database location and iCloud Drive
 
